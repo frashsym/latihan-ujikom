@@ -3,12 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
     public function index()
     {
-        return view('users.index');
+        $users = User::paginate(5);
+        return view('users.index', compact('users'));
     }
     public function create()
     {
@@ -16,8 +20,26 @@ class UserController extends Controller
     }
     public function store(Request $request)
     {
-        // Vidate and store the user data
-        // Redirect or return a responseal
+        // Validate the request
+        $validator = Validator::make($request->all(), [
+            'username' => 'required|string|max:255|unique:users',
+            'nama' => 'required|string|max:255',
+            'password' => 'required|string|min:8',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        // Create the user
+        $user = new User();
+        $user->username = $request->username;
+        $user->nama = $request->nama;
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        // Redirect or return a response
+        return redirect()->route('users.index')->with('success', 'User created successfully.');
     }
     public function show($id)
     {
@@ -26,17 +48,45 @@ class UserController extends Controller
     }
     public function edit($id)
     {
+        $users = User::findOrFail($id);
+        if (!$users) {
+            return redirect()->route('users.index')->with('error', 'User not found.');
+        }
         // Fetch the user for editing
-        return view('users.edit', compact('id'));
+        return view('users.edit', compact('users'));
     }
     public function update(Request $request, $id)
     {
-        // Validate and update the user data
+        // Validate the request
+        $validator = Validator::make($request->all(), [
+            'username' => 'required|string|max:255',
+            'nama' => 'required|string|max:255',
+            'password' => 'nullable|string|min:8',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        // Update the user
+        $user = User::findOrFail($id);
+        $user->username = $request->username;
+        $user->nama = $request->nama;
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->password);
+        }
+        $user->save();
+
         // Redirect or return a response
+        return redirect()->route('users.index')->with('success', 'User updated successfully.');
     }
     public function destroy($id)
     {
         // Delete the user
+        $user = User::findOrFail($id);
+        $user->delete();
+
         // Redirect or return a response
+        return redirect()->route('users.index')->with('success', 'User deleted successfully.');
     }
 }
