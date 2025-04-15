@@ -36,8 +36,8 @@
                                     <td class="py-2 px-4 border-b">{{ $bayar->tanggal_bayar }}</td>
                                     <td class="py-2 px-4 border-b">{{ $bayar->bulan_bayar }}</td>
                                     <td class="py-2 px-4 border-b">{{ $bayar->tahun_bayar }}</td>
-                                    <td class="py-2 px-4 border-b">{{ $bayar->jumlah_bayar }}</td>
                                     <td class="py-2 px-4 border-b">{{ $bayar->spp->tahun }} - {{ $bayar->spp->nominal }}</td>
+                                    <td class="py-2 px-4 border-b">{{ $bayar->jumlah_bayar }}</td>
                                     <td class="py-2 px-4 border-b">
                                         <a href="{{ route('pembayaran.edit', $bayar->id) }}" class="text-blue-500">Edit</a>
                                         |

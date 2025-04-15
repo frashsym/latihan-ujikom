@@ -5,12 +5,15 @@ use App\Http\Controllers\SppController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\ProfileController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', [IndexController::class, 'index'])->name('index');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
