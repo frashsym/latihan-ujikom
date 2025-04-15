@@ -70,12 +70,11 @@ class SiswaController extends Controller
         // Fetch the siswa for editing
         return view('siswa.edit', compact('siswa', 'kelas', 'spp'));
     }
-    public function update(Request $request, $nisn)
+    public function update(Request $request, $id)
     {
         // Validate the request
         $validator = Validator::make($request->all(), [
-            'nisn' => 'required|string|max:10|unique:siswa,nisn,' . $nisn . ',nisn',
-            'nis' => 'required|string|max:8|unique:siswa,nis,' . $nisn . ',nis',
+            'nis' => 'required|string|max:8|unique:siswa,nis,' . $id . ',nisn', 
             'nama' => 'required|string|max:255',
             'id_kelas' => 'required|integer',
             'alamat' => 'required|string|max:255',
@@ -87,18 +86,15 @@ class SiswaController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $siswa = Siswa::findOrFail($nisn);
-
         // Update the siswa
-        $siswa->update([
-            'nisn' => $request->nisn,
-            'nis' => $request->nis,
-            'nama' => $request->nama,
-            'id_kelas' => $request->id_kelas,
-            'alamat' => $request->alamat,
-            'no_telp' => $request->no_telp,
-            'id_spp' => $request->id_spp,
-        ]);
+        $siswa = Siswa::findOrFail($id);
+        $siswa->nis = $request->nis;
+        $siswa->nama = $request->nama;
+        $siswa->id_kelas = $request->id_kelas;
+        $siswa->alamat = $request->alamat;
+        $siswa->no_telp = $request->no_telp;
+        $siswa->id_spp = $request->id_spp;
+        $siswa->save();
 
         // Redirect or return a response
         return redirect()->route('siswa.index')->with('success', 'siswa updated successfully.');

@@ -1,15 +1,10 @@
 <x-app-layout>
 
     <div class="container">
-        <center>
-            <h1>Edit User</h1>
+            <h1>Edit Siswa</h1>
             <form action="{{ route('siswa.update', $siswa->nisn) }}" method="POST">
                 @csrf
                 @method('PATCH')
-                <div class="mb-3">
-                    <label for="nisn" class="form-label">Nisn</label>
-                    <input type="text" class="form-control" id="nisn" name="nisn" value="{{ $siswa->nisn }}" required>
-                </div>
                 <div class="mb-3">
                     <label for="nis" class="form-label">Nis</label>
                     <input type="text" class="form-control" id="nis" name="nis" value="{{ $siswa->nis }}" required>
@@ -45,5 +40,4 @@
                 <button type="submit" class="btn btn-primary">Edit</button>
             </form>
     </div>
-    </center>
 </x-app-layout>

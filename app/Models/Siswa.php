@@ -21,6 +21,12 @@ class Siswa extends Model
     public $incrementing = false;
     protected $keyType = 'string';
 
+    public function getRouteKeyName()
+    {
+        return 'nisn';
+    }
+
+
     public function kelas()
     {
         return $this->belongsTo(Kelas::class, 'id_kelas', 'id');

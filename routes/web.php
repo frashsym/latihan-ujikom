@@ -54,10 +54,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/', [SiswaController::class, 'index'])->name('siswa.index');
         Route::get('/create', [SiswaController::class, 'create'])->name('siswa.create');
         Route::post('/', [SiswaController::class, 'store'])->name('siswa.store');
-        Route::get('/{nisn}', [SiswaController::class, 'show'])->name('siswa.show');
-        Route::get('/{nisn}/edit', [SiswaController::class, 'edit'])->name('siswa.edit');
-        Route::patch('/{nisn}', [SiswaController::class, 'update'])->name('siswa.update');
-        Route::delete('/{nisn}', [SiswaController::class, 'destroy'])->name('siswa.destroy');
+        Route::get('/{id}', [SiswaController::class, 'show'])->name('siswa.show');
+        Route::get('/{id}/edit', [SiswaController::class, 'edit'])->name('siswa.edit');
+        Route::patch('/{id}', [SiswaController::class, 'update'])->name('siswa.update');
+        Route::delete('/{id}', [SiswaController::class, 'destroy'])->name('siswa.destroy');
     });
 
 });
