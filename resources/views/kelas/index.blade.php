@@ -10,7 +10,7 @@
                 <div class="p-6 text-gray-900">
                     <div class="flex justify-between mb-4">
                         <h1 class="text-2xl font-bold">Data Kelas</h1>
-                        <a href="{{ route('kelas.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded">Tambah User</a>
+                        <a href="{{ route('kelas.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded">Tambah Kelas</a>
                     </div>
 
                     <table class="min-w-full bg-white border border-gray-200">

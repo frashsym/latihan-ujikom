@@ -2,21 +2,17 @@
 
     <div class="container">
         <center>
-            <h1>Edit User</h1>
-            <form action="{{ route('users.update', $users->id) }}" method="POST">
+            <h1>Edit Spp</h1>
+            <form action="{{ route('spp.update', $spp->id) }}" method="POST">
                 @csrf
                 @method('PATCH')
                 <div class="mb-3">
-                    <label for="username" class="form-label">Username</label>
-                    <input type="text" class="form-control" id="username" name="username" value="{{ $users->username }}" required>
+                    <label for="tahun" class="form-label">Tahun</label>
+                    <input type="number" class="form-control" id="tahun" name="tahun" value="{{ $spp->tahun }}" required>
                 </div>
                 <div class="mb-3">
-                    <label for="nama" class="form-label">Nama</label>
-                    <input type="text" class="form-control" id="nama" name="nama" value="{{ $users->nama }}" required>
-                </div>
-                <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" required>
+                    <label for="nominal" class="form-label">Nominal</label>
+                    <input type="number" class="form-control" id="nominal" name="nominal" value="{{ $spp->nominal }}" required>
                 </div>
                 <button type="submit" class="btn btn-primary">Edit</button>
             </form>

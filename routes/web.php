@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SppController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KelasController;
+use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\ProfileController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -27,15 +29,37 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // Kelas
     Route::prefix('/kelas')->group(function () {
-        Route::get('/kelas', [KelasController::class, 'index'])->name('kelas.index');
-        Route::get('/kelas/create', [KelasController::class, 'create'])->name('kelas.create');
-        Route::post('/kelas', [KelasController::class, 'store'])->name('kelas.store');
-        Route::get('/kelas/{id}', [KelasController::class, 'show'])->name('kelas.show');
-        Route::get('/kelas/{id}/edit', [KelasController::class, 'edit'])->name('kelas.edit');
-        Route::patch('/kelas/{id}', [KelasController::class, 'update'])->name('kelas.update');
-        Route::delete('/kelas/{id}', [KelasController::class, 'destroy'])->name('kelas.destroy');
+        Route::get('/', [KelasController::class, 'index'])->name('kelas.index');
+        Route::get('/create', [KelasController::class, 'create'])->name('kelas.create');
+        Route::post('/', [KelasController::class, 'store'])->name('kelas.store');
+        Route::get('//{id}', [KelasController::class, 'show'])->name('kelas.show');
+        Route::get('/{id}/edit', [KelasController::class, 'edit'])->name('kelas.edit');
+        Route::patch('/{id}', [KelasController::class, 'update'])->name('kelas.update');
+        Route::delete('/{id}', [KelasController::class, 'destroy'])->name('kelas.destroy');
     });
-    
+
+    // Spp
+    Route::prefix('/spp')->group(function () {
+        Route::get('/', [SppController::class, 'index'])->name('spp.index');
+        Route::get('/create', [SppController::class, 'create'])->name('spp.create');
+        Route::post('/', [SppController::class, 'store'])->name('spp.store');
+        Route::get('/{id}', [SppController::class, 'show'])->name('spp.show');
+        Route::get('/{id}/edit', [SppController::class, 'edit'])->name('spp.edit');
+        Route::patch('/{id}', [SppController::class, 'update'])->name('spp.update');
+        Route::delete('/{id}', [SppController::class, 'destroy'])->name('spp.destroy');
+    });
+
+    // Siswa
+    Route::prefix('/siswa')->group(function () {
+        Route::get('/', [SiswaController::class, 'index'])->name('siswa.index');
+        Route::get('/create', [SiswaController::class, 'create'])->name('siswa.create');
+        Route::post('/', [SiswaController::class, 'store'])->name('siswa.store');
+        Route::get('/{nisn}', [SiswaController::class, 'show'])->name('siswa.show');
+        Route::get('/{nisn}/edit', [SiswaController::class, 'edit'])->name('siswa.edit');
+        Route::patch('/{nisn}', [SiswaController::class, 'update'])->name('siswa.update');
+        Route::delete('/{nisn}', [SiswaController::class, 'destroy'])->name('siswa.destroy');
+    });
+
 });
 
 // Profile

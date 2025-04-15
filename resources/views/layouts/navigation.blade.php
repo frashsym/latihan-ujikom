@@ -26,6 +26,16 @@
                         {{ __('Kelas') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('spp.index')" :active="request()->routeIs('spp')">
+                        {{ __('Spp') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('siswa.index')" :active="request()->routeIs('siswa')">
+                        {{ __('Siswa') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->

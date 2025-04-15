@@ -16,6 +16,11 @@ class Siswa extends Model
         'no_telp',
         'id_spp',
     ];
+
+    protected $primaryKey = 'nisn';
+    public $incrementing = false;
+    protected $keyType = 'string';
+
     public function kelas()
     {
         return $this->belongsTo(Kelas::class, 'id_kelas', 'id');
@@ -23,5 +28,9 @@ class Siswa extends Model
     public function spp()
     {
         return $this->belongsTo(Spp::class, 'id_spp', 'id');
+    }
+    public function pembayaran()
+    {
+        return $this->hasMany(Pembayaran::class, 'nisn', 'nisn');
     }
 }

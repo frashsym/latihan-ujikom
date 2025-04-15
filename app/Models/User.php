@@ -22,6 +22,10 @@ class User extends Authenticatable
         'password',
         'nama',
     ];
+    public function pembayaran()
+    {
+        return $this->belongsTo(Pembayaran::class, 'id_user', 'id');
+    }
 
     /**
      * The attributes that should be hidden for serialization.
