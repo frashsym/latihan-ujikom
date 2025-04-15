@@ -24,7 +24,7 @@ class User extends Authenticatable
     ];
     public function pembayaran()
     {
-        return $this->belongsTo(Pembayaran::class, 'id_user', 'id');
+        return $this->hasMany(Pembayaran::class, 'id_user', 'id');
     }
 
     /**

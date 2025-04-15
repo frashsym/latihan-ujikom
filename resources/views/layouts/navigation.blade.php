@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="/">
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
                     </a>
                 </div>
@@ -17,23 +17,28 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('users.index')" :active="request()->routeIs('user')">
+                    <x-nav-link :href="route('users.index')" :active="request()->routeIs('user.index')">
                         {{ __('User') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('kelas.index')" :active="request()->routeIs('kelas')">
+                    <x-nav-link :href="route('kelas.index')" :active="request()->routeIs('kelas.index')">
                         {{ __('Kelas') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('spp.index')" :active="request()->routeIs('spp')">
+                    <x-nav-link :href="route('spp.index')" :active="request()->routeIs('spp.index')">
                         {{ __('Spp') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('siswa.index')" :active="request()->routeIs('siswa')">
+                    <x-nav-link :href="route('siswa.index')" :active="request()->routeIs('siswa.index')">
                         {{ __('Siswa') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('pembayaran.index')" :active="request()->routeIs('pembayaran.index')">
+                        {{ __('Pembayaran') }}
                     </x-nav-link>
                 </div>
             </div>

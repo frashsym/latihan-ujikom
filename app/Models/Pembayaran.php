@@ -18,14 +18,14 @@ class Pembayaran extends Model
     ];
     public function user()
     {
-        return $this->hasMany(Siswa::class, 'id_user', 'id');
+        return $this->belongsTo(User::class, 'id_user', 'id');
     }
     public function siswa()
     {
-        return $this->hasMany(Siswa::class, 'nisn', 'nisn');
+        return $this->belongsTo(Siswa::class, 'nisn', 'nisn');
     }
     public function spp()
     {
-        return $this->hasMany(Spp::class, 'id_spp', 'id');
+        return $this->belongsTo(Spp::class, 'id_spp', 'id');
     }
 }

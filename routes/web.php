@@ -5,6 +5,7 @@ use App\Http\Controllers\SppController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\ProfileController;
 
 Route::get('/', function () {
@@ -58,6 +59,18 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/{id}/edit', [SiswaController::class, 'edit'])->name('siswa.edit');
         Route::patch('/{id}', [SiswaController::class, 'update'])->name('siswa.update');
         Route::delete('/{id}', [SiswaController::class, 'destroy'])->name('siswa.destroy');
+    });
+
+    // Pembayaran
+    Route::prefix('/pembayaran')->group(callback: function () {
+        Route::get('/', [PembayaranController::class, 'index'])->name('pembayaran.index');
+        Route::get('/create', [PembayaranController::class, 'create'])->name('pembayaran.create');
+        Route::post('/', [PembayaranController::class, 'store'])->name('pembayaran.store');
+        Route::get('/{id}', [PembayaranController::class, 'show'])->name('pembayaran.show');
+        Route::get('/{id}/edit', [PembayaranController::class, 'edit'])->name('pembayaran.edit');
+        Route::patch('/{id}', [PembayaranController::class, 'update'])->name('pembayaran.update');
+        Route::delete('/{id}', [PembayaranController::class, 'destroy'])->name('pembayaran.destroy');
+        Route::get('/', [PembayaranController::class, 'index'])->name('pembayaran.index');
     });
 
 });
