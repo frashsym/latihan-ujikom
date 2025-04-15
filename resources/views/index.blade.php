@@ -14,7 +14,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <div class="flex justify-between mb-4">
-                        <h1 class="text-2xl font-bold">Data Pembayaran</h1>
+                        <h1 class="text-2xl font-bold">Data Pembayaran Spp</h1>
                         @auth
                             <form method="GET" action="{{ route('index') }}" class="d-flex align-items-center">
                                 <label for="bulan" class="me-2">Pilih Bulan:</label>
@@ -52,7 +52,7 @@
                                 @endif
                             </form>
                             @if (Route::has('login'))
-                            <br>
+                                <br>
                                 <a href="{{ url('/dashboard') }}"
                                     class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal">
                                     Dashboard
